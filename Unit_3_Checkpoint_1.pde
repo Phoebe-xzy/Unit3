@@ -1,14 +1,10 @@
-//Phoebe Xie Mar.3rd 2025
-//Unit 3 Check points
-
 color lightBrown = #f8ffe5;
 color pink = #ef476f;
 color green = #06d6a0;
 color yellow = #ffc43d;
-color lightPink = #f07167;
 color white = #FFFFFF;
+color darkBrown = #432818;
 color selectedColor;
-
 
 void setup(){
   size(800,800);
@@ -17,35 +13,46 @@ void setup(){
 
 void draw(){
   background(lightBrown);
-  //square
+
+  // Draw the main square
   stroke(yellow);
   strokeWeight(5);
   fill(selectedColor);
   square(200, 100, 400);
-  
-  //pink button
+
+  // --- Pink button ---
+  // Check if mouse is within 50 px (radius) of circle center (200,600)
   if(dist(200, 600, mouseX, mouseY) < 50){
-    stroke(white);
+    stroke(darkBrown);       // hover highlight
   } else {
-    stroke(white);
+    stroke(lightBrown);      // normal border
   }
-  
- 
- fill(pink);
-  stroke(lightBrown);
+  strokeWeight(5);           // so we can see the border clearly
+  fill(pink);
   circle(200, 600, 100);
-  
-  //grenn button
+
+  // --- Green button ---
+  if(dist(400, 600, mouseX, mouseY) < 50){
+    stroke(darkBrown);
+  } else {
+    stroke(lightBrown);
+  }
+  strokeWeight(5);
   fill(green);
-  stroke(lightBrown);
   circle(400, 600, 100);
-  
-  //yellow button
+
+  // --- Yellow button ---
+  if(dist(600, 600, mouseX, mouseY) < 50){
+    stroke(darkBrown);
+  } else {
+    stroke(lightBrown);
+  }
+  strokeWeight(5);
   fill(yellow);
-  stroke(lightBrown);
-  circle(600, 600, 100); 
+  circle(600, 600, 100);
 }
 
+// When you release the mouse, check if it was over any button to change the square color
 void mouseReleased(){
   if(dist(200, 600, mouseX, mouseY) < 50){
     selectedColor = pink;  
@@ -58,5 +65,4 @@ void mouseReleased(){
   if(dist(600, 600, mouseX, mouseY) < 50){
     selectedColor = yellow;  
   }
-
 }
